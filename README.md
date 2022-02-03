@@ -3,7 +3,7 @@
 This application connects to your YugabyteDB instance via the 
 [Python psycopg2 driver](https://docs.yugabyte.com/latest/reference/drivers/ysql-client-drivers/#psycopg2) and performs basic SQL 
 operations. The instructions below are provided for [Yugabyte Cloud](https://cloud.yugabyte.com/) deployments. 
-If you use a different type of deployment, then update the `sample-app.go` file with proper connection parameters.
+If you use a different type of deployment, then update the `sample-app.py` file with proper connection parameters.
 
 ## Prerequisite
 * Python 3.6 or later
@@ -67,7 +67,7 @@ name = John, age = 28, country = Canada, balance = 9800
 
 Congrats! You've successfully executed a simple Go app that works with Yugabyte Cloud.
 
-Now, explore the source code of `sample-app.go`:
+Now, explore the source code of `sample-app.py`:
 1. `main` function - establishes a connection with your cloud instance via Go PostgreSQL driver.
 3. `createDatabase` function - creates a table and populates it with sample data.
 4. `selectAccounts` function - queries the data with SQL `SELECT` statements.
