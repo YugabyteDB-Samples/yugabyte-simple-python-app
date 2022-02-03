@@ -39,10 +39,11 @@ Open the `sample-app.py` file and edit the following configuration parameters:
 * `server` - The server hostname to connect to
 * `cert_file` - If using SSL, Full path to the root CA certificate if using SSL, otherwise leave as None
 
-## Execute the script 
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
 
 ![image](resources/cloud-app-settings.png)
+
+## Execute the script 
 
 ```bash
 python3 sample-app.py
