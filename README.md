@@ -42,7 +42,7 @@ Open the `sample-app.py` file and edit the following configuration parameters:
 ## Execute the script 
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
 
-![image](resources/cloud_app_settings.png)
+![image](resources/cloud-app-settings.png)
 
 ```bash
 python3 sample-app.py
