@@ -32,7 +32,7 @@ pip install -r requirements.txt
 ## Execute the script passing in the required arguments
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
 
-![image](resources/cloud_app_settings.png)
+![image](resources/cloud-app-settings.png)
 
 ```bash
 python3 sample-app.py -u <username> -p <password> -s <hostname> -c </path/to/root.crt>
