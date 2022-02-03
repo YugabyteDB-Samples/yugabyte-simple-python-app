@@ -37,7 +37,7 @@ Open the `sample-app.py` file and edit the following configuration parameters:
 * `username` - The username for connecting to the database
 * `password` - The password for connecting to the database
 * `server` - The server hostname to connect to
-* `cert_file` - If using SSL, Full path to the root CA certificate if using SSL, otherwise leave as None
+* `cert_file` - If using SSL, Full path to the root CA certificate, otherwise leave as None
 
 ## Execute the script 
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
