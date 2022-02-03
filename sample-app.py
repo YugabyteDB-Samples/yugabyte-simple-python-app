@@ -1,22 +1,25 @@
-import argparse
 import psycopg2
 import psycopg2.extras
 
+config = {
+    'username': '', # The username for connecting to the database
+    'password': '', # The password for connecting to the database
+    'server': '', # The server hostname to connect to
+    'cert_file': None # Full path to the root CA certificate if using SSL
+}
 
-arg_parser = argparse.ArgumentParser(
-    description="This script connects to a YugabyteDB cluster and performs basic SQL operations.")
-arg_parser.add_argument('-u', '--username', help="The username for connecting to the database.", default="admin")
-arg_parser.add_argument('-p', '--password', help="The password for connecting to the database.")
-arg_parser.add_argument('-s', '--server', help="The server hostname to connect to.")
-arg_parser.add_argument('-c', '--cert_file', help="Full path to the root CA certificate to validate the connection.")
 
-
-def main(args):
+def main(conf):
     try:
-        yb = psycopg2.connect(user=args.username, password=args.password,
-                              host=args.server,
-                              port='5433', database='yugabyte',
-                              sslmode="verify-full", sslrootcert=args.cert_file)
+        if conf['cert_file']:
+            yb = psycopg2.connect(user=conf['username'], password=conf['password'],
+                                  host=conf['server'],
+                                  port='5433', database='yugabyte',
+                                  sslmode="verify-full", sslrootcert=conf['cert_file'])
+        else:
+            yb = psycopg2.connect(user=conf['username'], password=conf['password'],
+                                  host=conf['server'],
+                                  port='5433', database='yugabyte')
     except Exception as e:
         print("Exception while connecting to YugabyteDB")
         print(e)
@@ -89,4 +92,4 @@ def transfer_money_between_accounts(yb, amount):
 
 
 if __name__ == "__main__":
-    main(arg_parser.parse_args())
+    main(config)

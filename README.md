@@ -6,7 +6,7 @@ operations. The instructions below are provided for [Yugabyte Cloud](https://clo
 If you use a different type of deployment, then update the `sample-app.go` file with proper connection parameters.
 
 ## Prerequisite
-* Python 3.6 or later is preferred.
+* Python 3.6 or later
 * psycopg2
 
 ## Start Yugabyte Cloud Cluster
@@ -29,13 +29,23 @@ git clone https://github.com/yugabyte/yugabyte-simple-python-app.git && cd yugab
 pip install -r requirements.txt
 ```
 
-## Execute the script passing in the required arguments
+## Provide Yugabyte Cloud Connection Parameters
+
+Note, Yugabyte Cloud requires SSL connections
+
+Open the `sample-app.py` file and edit the following configuration parameters:
+* `username` - The username for connecting to the database
+* `password` - The password for connecting to the database
+* `server` - The server hostname to connect to
+* `cert_file` - If using SSL, Full path to the root CA certificate if using SSL, otherwise leave as None
+
+## Execute the script 
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
 
 ![image](resources/cloud_app_settings.png)
 
 ```bash
-python3 sample-app.py -u <username> -p <password> -s <hostname> -c </path/to/root.crt>
+python3 sample-app.py
 ```
 
 Upon successful execution, you will see output similar to the following:
