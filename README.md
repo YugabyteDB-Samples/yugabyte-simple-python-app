@@ -68,10 +68,10 @@ name = John, age = 28, country = Canada, balance = 9800
 Congrats! You've successfully executed a simple Python app that works with Yugabyte Cloud.
 
 Now, explore the source code of `sample-app.py`:
-1. `main` function - establishes a connection with your cloud instance via Go PostgreSQL driver.
-3. `createDatabase` function - creates a table and populates it with sample data.
-4. `selectAccounts` function - queries the data with SQL `SELECT` statements.
-5. `transferMoneyBetweenAccounts` function - updates records consistently with distributed transactions.
+1. `main` function - establishes a connection with your cloud instance via psycopg2 driver.
+3. `create_database` function - creates a table and populates it with sample data.
+4. `select_accounts` function - queries the data with SQL `SELECT` statements.
+5. `transfer_money_between_accounts` function - updates records consistently with distributed transactions.
 
 ## Questions or Issues?
 
