@@ -6,8 +6,8 @@ operations. The instructions below are provided for [Yugabyte Cloud](https://clo
 If you use a different type of deployment, then update the `sample-app.py` file with proper connection parameters.
 
 ## Prerequisite
-* Python 3.6 or later
-* psycopg2
+* macOS with Apple M1 chip: Python 3.9.7 or later
+* Other Operating Systems: Python 3.6 or later
 
 ## Start Yugabyte Cloud Cluster
 
@@ -23,35 +23,35 @@ Clone the repository and change dirs into it:
 git clone https://github.com/yugabyte/yugabyte-simple-python-app.git && cd yugabyte-simple-python-app
 ```
 
-## Install required packages
-
-```bash
-pip install -r requirements.txt
-```
-
 ## Provide Yugabyte Cloud Connection Parameters
 
-Note, Yugabyte Cloud requires SSL connections
-
 Open the `sample-app.py` file and edit the following configuration parameters:
-* `username` - The username for connecting to the database
-* `password` - The password for connecting to the database
-* `server` - The server hostname to connect to
-* `cert_file` - If using SSL, Full path to the root CA certificate, otherwise leave as None
+* `host` - the hostname of your Yugabyte Cloud instance.
+* `port` - the port number of the instance (the default is `5433`).
+* `dbUser` - the username for your instance.
+* `dbPassword` - the database password.
+* `sslMode` - the SSL mode. Set to `verify-full` for Yugabyte Cloud deployments.
+* `sslRootCert` - a full path to your CA root cert (for example, `/Users/dmagda/certificates/root.crt`) 
 
 Note, you can easily find all the settings on the Yugabyte Cloud dashboard:
 
 ![image](resources/cloud-app-settings.png)
 
-## Execute the script 
+## Run the Application
 
-```bash
-python3 sample-app.py
-```
+1. Install [psycopg2](https://pypi.org/project/psycopg2/) (PostgreSQL database adapter):
+    ```bash
+    pip3 install psycopg2-binary
+    ```
+2. Run the application:
+    ```bash
+    python3 sample-app.py
+    ```
 
 Upon successful execution, you will see output similar to the following:
 
 ```bash
+>>>> Connecting to YugabyteDB!
 >>>> Successfully connected to YugabyteDB!
 >>>> Successfully created table DemoAccount.
 >>>> Selecting accounts:
@@ -63,9 +63,9 @@ name = Jessica, age = 28, country = USA, balance = 9200
 name = John, age = 28, country = Canada, balance = 9800
 ```
 
-## Explore App Logic
+## Explore Application Logic
 
-Congrats! You've successfully executed a simple Go app that works with Yugabyte Cloud.
+Congrats! You've successfully executed a simple Python app that works with Yugabyte Cloud.
 
 Now, explore the source code of `sample-app.py`:
 1. `main` function - establishes a connection with your cloud instance via Go PostgreSQL driver.

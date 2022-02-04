@@ -2,24 +2,29 @@ import psycopg2
 import psycopg2.extras
 
 config = {
-    'username': '', # The username for connecting to the database
-    'password': '', # The password for connecting to the database
-    'server': '', # The server hostname to connect to
-    'cert_file': None # Full path to the root CA certificate if using SSL
+    'host': '',
+    'port': '5433',
+    'dbName': 'yugabyte',
+    'dbUser': '',
+    'dbPassword': '',
+    'sslMode': '',
+    'sslRootCert': ''
 }
 
 
 def main(conf):
+    print(">>>> Connecting to YugabyteDB!")
+
     try:
-        if conf['cert_file']:
-            yb = psycopg2.connect(user=conf['username'], password=conf['password'],
-                                  host=conf['server'],
-                                  port='5433', database='yugabyte',
-                                  sslmode="verify-full", sslrootcert=conf['cert_file'])
+        if conf['sslMode'] != '':
+            yb = psycopg2.connect(host=conf['host'], port=conf['port'], database=conf['dbName'],
+                                  user=conf['dbUser'], password=conf['dbPassword'],
+                                  sslmode=conf['sslMode'], sslrootcert=conf['sslRootCert'],
+                                  connect_timeout=10)
         else:
-            yb = psycopg2.connect(user=conf['username'], password=conf['password'],
-                                  host=conf['server'],
-                                  port='5433', database='yugabyte')
+            yb = psycopg2.connect(host=conf['host'], port=conf['port'], database=conf['dbName'],
+                                  user=conf['dbUser'], password=conf['dbPassword'],
+                                  connect_timeout=10)
     except Exception as e:
         print("Exception while connecting to YugabyteDB")
         print(e)
