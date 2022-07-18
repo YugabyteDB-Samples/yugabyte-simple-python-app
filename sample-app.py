@@ -90,7 +90,7 @@ def transfer_money_between_accounts(yb, amount):
         print(e)
         if e.pgcode == 40001:
             print("The operation is aborted due to a concurrent transaction that is modifying the same set of rows." +
-                  "Consider adding retry logic for production-grade applications.")
+                  "Consider adding retry logic or using the pessimistic locking.")
         exit(1)
 
     print(">>>> Transferred {} between accounts.".format(amount))
