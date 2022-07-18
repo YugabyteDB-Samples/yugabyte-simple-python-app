@@ -2,11 +2,11 @@ import psycopg2
 import psycopg2.extras
 
 config = {
-    'host': '',
+    'host': '127.0.0.1',
     'port': '5433',
     'dbName': 'yugabyte',
-    'dbUser': '',
-    'dbPassword': '',
+    'dbUser': 'yugabyte',
+    'dbPassword': 'yugabyte',
     'sslMode': '',
     'sslRootCert': ''
 }
